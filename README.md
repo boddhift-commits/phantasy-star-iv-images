@@ -1,25 +1,48 @@
 # Phantasy Star IV - Extracted Images
 
-Extracted graphics from the Phantasy Star IV disassembly (ps4disasm / lory90).
+Automated extraction of graphics from the Phantasy Star IV disassembly (`ps4disasm` / lory90).
 
-## Extracted content
+## Quick start (automated)
 
-- Dialogue portraits (PNG)
-- Battle backgrounds (PNG)
+1. Install dependencies:
+   ```bash
+   pip install pillow
+   ```
+
+2. Build the decompression tools (once):
+   - [accurate-kosinski](https://github.com/Clownacy/accurate-kosinski) → produces `kosinski-decompress`
+   - [clownnemesis](https://github.com/Clownacy/clownnemesis) → produces `clownnemesis`
+   - [clownlzss](https://github.com/Clownacy/clownlzss) → produces `clownlzss`
+
+   Put the three binaries in your PATH or in the same folder as the script.
+
+3. Run the extractor:
+   ```bash
+   python3 extract_images.py /path/to/your/ps4disasm
+   ```
+
+The script will:
+- Decompress all Kosinski, Nemesis and Enigma files
+- Convert tile data to PNG (with automatic palette matching)
+- Copy palettes
+- Create a ready-to-use `PSIV_Images.zip`
+
+## Output structure
+
+```
+extracted_images/
+├── tiles/          # PNG images + raw decompressed data
+├── mappings/       # Enigma plane mappings
+└── palettes/       # Palette files
+PSIV_Images.zip
+```
+
+## What you get
+
+- Dialogue portraits
+- Battle backgrounds
 - Intro graphics
-- Enigma plane mappings
+- Plane mappings
 - Palettes
-
-~77 PNG tile images generated after decompression.
-
-## Tools
-
-- Kosinski: Clownacy/accurate-kosinski
-- Nemesis: Clownacy/clownnemesis
-- Enigma: Clownacy/clownlzss
-
-## Regeneration
-
-See `extract_images.py`. Point `BASE` to your disassembly folder and ensure the decompression binaries are available.
 
 Educational / research use only. Original game © Sega.
