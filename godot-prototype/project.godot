@@ -1,0 +1,12 @@
+; Godot 4 project file for PSIV HD prototype
+config_version=5
+
+[application]
+config/name="Phantasy Star IV HD"
+run/main_scene="res://scenes/Main.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
